@@ -4,7 +4,7 @@ const fs = require("fs"); //import "FS" - File System at this projct.
 
 
 const app = express(); //Starting a const with Express
-app.use(express.json()); // Specify datatype to work 
+app.use(express.json()); // specific datatype to work 
 
 let login = []; //Creating a array to save data (But in this project has implemented the FS to manegement data with a JSON file).
 
@@ -45,20 +45,20 @@ app.get("/login", (req, res) => { //Using a GET method to list all data saved.
 
 
 //GET with ID
-app.get("/login/:id", (req, res) => { //Using a GET method with id "Params" to take a specify value.
+app.get("/login/:id", (req, res) => { //Using a GET method with id "Params" to take a specific value.
     const { id } = req.params; //Setting a return in const id.
-    const account = login.find((account) => account.id === id); //"account" was recive the function find() to search a specify id sended in params url. 
+    const account = login.find((account) => account.id === id); //"account" was recive the function find() to search a specific id sended in params url. 
     return res.json(account); //Returning a response obtained in "account".
 })
 /////////////////////////////////////////////
 
 
 //PUT
-app.put("/login/:id", (req, res) => { //Using a PUT method with id "Params" to take a specify value.
+app.put("/login/:id", (req, res) => { //Using a PUT method with id "Params" to take a specific value.
     const { id } = req.params; //Setting a return in const id.
     const { name, email, user, password } = req.body; //Subscribe all values obtained in requisition.
 
-    const loginIndex = login.findIndex(account => account.id === id); //Looking for a specifyed id with findIndex() in all values saved in array.
+    const loginIndex = login.findIndex(account => account.id === id); //Looking for a specificed id with findIndex() in all values saved in array.
     login[loginIndex] = { //Accesing a login with id obtained in loginIndex.
         ...login[loginIndex], //We can use the 3 dots in Javascript function calls to convert an array into a set of arguments for a function.
         name, //Subscribe all values 
@@ -75,11 +75,11 @@ app.put("/login/:id", (req, res) => { //Using a PUT method with id "Params" to t
 
 
 // DELETE
-app.delete("/login/:id", (req, res) => { //Using a DELETE method with id "Params" to take a specify value.
+app.delete("/login/:id", (req, res) => { //Using a DELETE method with id "Params" to take a specific value.
     const { id } = req.params; //Setting a return in const id.
-    const loginIndex = login.findIndex(account => account.id === id); //Looking for a specifyed id with findIndex() in all values saved in array.
+    const loginIndex = login.findIndex(account => account.id === id); //Looking for a specificed id with findIndex() in all values saved in array.
 
-    login.splice(loginIndex, 1); //Using a splice() to remove a specify id value of array
+    login.splice(loginIndex, 1); //Using a splice() to remove a specific id value of array
 
     listAccounts(); //Calling a listAccounts function to write data.
 
